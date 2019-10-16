@@ -1,22 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using OdeToFood.Core;
+using OdeToFood.Data;
 
 namespace OdeToFood.Pages.Restaurants
 {
     public class ListModel : PageModel
-    {
-        private readonly IConfiguration _config;
+    {         
+        public IEnumerable<Restaurant> Restaurants { get; set; }
+        private IRestaurantData RestaurantData { get; }
 
-        public string Message { get; set; }
-
-        public ListModel(IConfiguration config)
-        {
-            _config = config;
+        public ListModel(IRestaurantData restaurantData)
+        {            
+            RestaurantData = restaurantData;
         }
 
         public void OnGet()
         {
-            Message = $"Hello, world! from {_config["MyName"]}";
+            Restaurants = RestaurantData.GetAll();
         }
     }
 }

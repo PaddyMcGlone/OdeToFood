@@ -11,4 +11,9 @@
   <ItemGroup>
     <Folder Include="Pages\Restaurants\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OdeToFood.Data\OdeToFood.Data.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
