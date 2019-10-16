@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace OdeToFood.Core
 {
     public class Restaurant
@@ -9,6 +10,6 @@ namespace OdeToFood.Core
 
         public string Location { get; set; }
 
-        public CusineType Type { get; set; }        
+        public CusineType Cusine { get; set; }        
     }
 }
