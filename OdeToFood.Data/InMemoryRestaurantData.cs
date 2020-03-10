@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using OdeToFood.Core;
+using System.Linq;
 
 namespace OdeToFood.Data
 {
     public class InMemoryRestaurantData : IRestaurantData
     {
-        private List<Restaurant> restaurants;
+        private List<Restaurant> restaurants;        
 
         public InMemoryRestaurantData()
         {
@@ -15,11 +16,14 @@ namespace OdeToFood.Data
                 new Restaurant{ Id = 2, Name = "Dawali", Cusine = CusineType.Indian, Location = "Belfast"},
                 new Restaurant{ Id = 3, Name = "New Mexico", Cusine = CusineType.Mexican, Location = "Belfast"}
             };
-        }
+        }        
 
-        public IEnumerable<Restaurant> GetAll()
+        public IEnumerable<Restaurant> FindRestaurants(string name = null)
         {
-            return restaurants;
+            return from r in restaurants
+            where string.IsNullOrWhiteSpace(name) || r.Name.ToLower().StartsWith(name.ToLower())
+            orderby r.Name
+            select r;
         }
     }
 }
