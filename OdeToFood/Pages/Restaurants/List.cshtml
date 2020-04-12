@@ -30,7 +30,7 @@
     @foreach (var restaurant in Model.Restaurants)
     {
         <tr>
-            <td>@restaurant.Name</td>
+            <td><a asp-page="./details" asp-route-id="@restaurant.Id">@restaurant.Name </a></td>
             <td>@restaurant.Location</td>
             <td>@restaurant.Cusine</td>
         </tr>

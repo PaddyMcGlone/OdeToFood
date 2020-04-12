@@ -6,5 +6,7 @@ namespace OdeToFood.Data
     public interface IRestaurantData
     {        
         IEnumerable<Restaurant> FindRestaurants(string name = null);
+
+        Restaurant FindRestaurant(int id);
     }
 }

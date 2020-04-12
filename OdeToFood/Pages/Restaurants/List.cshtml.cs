@@ -7,12 +7,12 @@ using OdeToFood.Data;
 namespace OdeToFood.Pages.Restaurants
 {
     public class ListModel : PageModel
-    {         
-        public IEnumerable<Restaurant> Restaurants { get; set; }
-
+    {                 
         #region Properties
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
+
+        public IEnumerable<Restaurant> Restaurants { get; set; }
 
         private IRestaurantData RestaurantData { get; }
         #endregion
