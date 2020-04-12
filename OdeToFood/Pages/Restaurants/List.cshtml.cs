@@ -10,19 +10,25 @@ namespace OdeToFood.Pages.Restaurants
     {         
         public IEnumerable<Restaurant> Restaurants { get; set; }
 
+        #region Properties
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
         private IRestaurantData RestaurantData { get; }
+        #endregion
 
+        #region Constructor
         public ListModel(IRestaurantData restaurantData)
         {            
             RestaurantData = restaurantData;
         }
+        #endregion
 
+        #region Action methods
         public void OnGet()
         {
             Restaurants = RestaurantData.FindRestaurants(SearchTerm);
         }
+        #endregion
     }
 }
