@@ -12,11 +12,12 @@ namespace OdeToFood.Pages.Restaurants
     {
         #region Properties
 
+        [BindProperty]
         public Restaurant Restaurant { get; set; }        
         public IEnumerable<SelectListItem> Cuisines { get; set; }
         private IRestaurantData RestaurantData { get; }
         private IHtmlHelper HtmlHelper { get; }
-
+         
         #endregion
 
         #region Constructor
@@ -44,6 +45,11 @@ namespace OdeToFood.Pages.Restaurants
                 RedirectToPage("./NotFound");
 
             return Page();
+        }
+
+        public void OnPost()
+        {
+            RestaurantData.Update(Restaurant);
         }
 
         #endregion

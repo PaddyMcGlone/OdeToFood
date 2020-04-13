@@ -8,5 +8,9 @@ namespace OdeToFood.Data
         IEnumerable<Restaurant> FindRestaurants(string name = null);
 
         Restaurant FindRestaurant(int id);
+
+        Restaurant Update(Restaurant UpdatedRestaurant);
+
+        int Commit();
     }
 }
