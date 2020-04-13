@@ -25,6 +25,7 @@ namespace OdeToFood.Pages
         #endregion
 
 
+        #region Methods       
         public void OnGet(int id)
         {
             if (id == 0)
@@ -32,5 +33,6 @@ namespace OdeToFood.Pages
 
             Restaurant = restaurantData.FindRestaurant(id);
         }
+        #endregion
     }
 }
