@@ -10,6 +10,6 @@ namespace OdeToFood.Core
 
         public string Location { get; set; }
 
-        public CusineType Cusine { get; set; }        
+        public CusineType Cusine { get; set; }
     }
 }
