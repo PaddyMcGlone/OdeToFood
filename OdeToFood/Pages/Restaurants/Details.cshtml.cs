@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OdeToFood.Core;
 using OdeToFood.Data;
@@ -24,14 +25,18 @@ namespace OdeToFood.Pages
 
         #endregion
 
-
         #region Methods       
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             if (id == 0)
                 throw new ArgumentNullException("id");
 
             Restaurant = restaurantData.FindRestaurant(id);
+
+            if (Restaurant == null)
+                return RedirectToPage("./NotFound");
+
+            return Page();
         }
         #endregion
     }
