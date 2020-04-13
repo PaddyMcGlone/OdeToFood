@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OdeToFood.Core;
 using OdeToFood.Data;
 
@@ -10,16 +12,19 @@ namespace OdeToFood.Pages.Restaurants
     {
         #region Properties
 
-        public Restaurant restaurant { get; set; }
-        public IRestaurantData RestaurantData { get; }
+        public Restaurant Restaurant { get; set; }        
+        public IEnumerable<SelectListItem> Cuisines { get; set; }
+        private IRestaurantData RestaurantData { get; }
+        private IHtmlHelper HtmlHelper { get; }
 
         #endregion
 
         #region Constructor
 
-        public EditModel(IRestaurantData restaurantData)
+        public EditModel(IRestaurantData restaurantData, IHtmlHelper htmlHelper)
         {
             RestaurantData = restaurantData;
+            HtmlHelper = htmlHelper;
         }
 
         #endregion
@@ -31,9 +36,11 @@ namespace OdeToFood.Pages.Restaurants
             if (id == 0)
                 throw new ArgumentNullException("id");
 
-            restaurant = RestaurantData.FindRestaurant(id);
+            // Build the cuisine select list.
+            Cuisines = HtmlHelper.GetEnumSelectList<CusineType>();
+            Restaurant = RestaurantData.FindRestaurant(id);
 
-            if (restaurant == null)
+            if (Restaurant == null)
                 RedirectToPage("./NotFound");
 
             return Page();
