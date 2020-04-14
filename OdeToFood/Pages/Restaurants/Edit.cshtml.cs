@@ -13,9 +13,14 @@ namespace OdeToFood.Pages.Restaurants
         #region Properties
 
         [BindProperty]
-        public Restaurant Restaurant { get; set; }        
+        public Restaurant Restaurant { get; set; }
+        
         public IEnumerable<SelectListItem> Cuisines { get; set; }
+
+        public string CancelDestination { get; set; }
+
         private IRestaurantData RestaurantData { get; }
+
         private IHtmlHelper HtmlHelper { get; }
          
         #endregion
@@ -39,6 +44,8 @@ namespace OdeToFood.Pages.Restaurants
 
             Restaurant = id.HasValue ? RestaurantData.FindRestaurant(id.Value)
                 : new Restaurant();
+
+            CancelDestination = id.HasValue ? "./Details" : "./List";
                         
             if (Restaurant == null)
                 RedirectToPage("./NotFound");
