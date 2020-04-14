@@ -12,6 +12,9 @@ namespace OdeToFood.Pages
 
         public Restaurant Restaurant { get; set; }
 
+        [TempData]
+        public string Message { get; set; }
+
         private IRestaurantData restaurantData { get; set; }
 
         #endregion

@@ -8,6 +8,11 @@
 
 <h2>@Model.Restaurant.Name</h2>
 
+@if (!string.IsNullOrWhiteSpace(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
 <form>
     <div class="form-group">
         <label asp-for="Restaurant.Name"></label>

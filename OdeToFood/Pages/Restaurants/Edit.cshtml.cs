@@ -57,8 +57,9 @@ namespace OdeToFood.Pages.Restaurants
             Restaurant = Restaurant.Id > 0 ?
                 RestaurantData.Update(Restaurant):
                 RestaurantData.Add(Restaurant);
-            
-            return RedirectToPage("./List");
+
+            TempData["Message"] = "Restaurant saved.";
+            return RedirectToPage("./Details", new { Restaurant.Id });
         }
 
         #endregion
