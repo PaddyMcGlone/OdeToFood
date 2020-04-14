@@ -36,8 +36,7 @@ namespace OdeToFood.Pages.Restaurants
         {
             if (id == 0)
                 throw new ArgumentNullException("id");
-
-            // Build the cuisine select list.
+            
             Cuisines = HtmlHelper.GetEnumSelectList<CusineType>();
             Restaurant = RestaurantData.FindRestaurant(id);
 
@@ -47,9 +46,12 @@ namespace OdeToFood.Pages.Restaurants
             return Page();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
+            Cuisines = HtmlHelper.GetEnumSelectList<CusineType>();
             RestaurantData.Update(Restaurant);
+
+            return RedirectToPage("./List");
         }
 
         #endregion
