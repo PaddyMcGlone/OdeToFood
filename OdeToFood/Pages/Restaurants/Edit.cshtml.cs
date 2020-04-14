@@ -49,8 +49,11 @@ namespace OdeToFood.Pages.Restaurants
         public IActionResult OnPost()
         {
             Cuisines = HtmlHelper.GetEnumSelectList<CusineType>();
-            RestaurantData.Update(Restaurant);
 
+            if (!ModelState.IsValid)            
+                return Page();
+            
+            RestaurantData.Update(Restaurant);
             return RedirectToPage("./List");
         }
 
