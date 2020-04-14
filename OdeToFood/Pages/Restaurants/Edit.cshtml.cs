@@ -32,14 +32,14 @@ namespace OdeToFood.Pages.Restaurants
 
         #region Methods
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int? id)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            
+                        
             Cuisines = HtmlHelper.GetEnumSelectList<CusineType>();
-            Restaurant = RestaurantData.FindRestaurant(id);
 
+            Restaurant = id.HasValue ? RestaurantData.FindRestaurant(id.Value)
+                : new Restaurant();
+                        
             if (Restaurant == null)
                 RedirectToPage("./NotFound");
 
