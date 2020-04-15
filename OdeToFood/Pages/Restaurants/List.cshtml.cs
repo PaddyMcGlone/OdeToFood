@@ -7,28 +7,22 @@ using OdeToFood.Data;
 namespace OdeToFood.Pages.Restaurants
 {
     public class ListModel : PageModel
-    {                 
-        #region Properties
+    {         
+        public IEnumerable<Restaurant> Restaurants { get; set; }
+
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
-        public IEnumerable<Restaurant> Restaurants { get; set; }
-
         private IRestaurantData RestaurantData { get; }
-        #endregion
 
-        #region Constructor
         public ListModel(IRestaurantData restaurantData)
         {            
             RestaurantData = restaurantData;
         }
-        #endregion
 
-        #region Action methods
         public void OnGet()
         {
             Restaurants = RestaurantData.FindRestaurants(SearchTerm);
         }
-        #endregion
     }
 }
