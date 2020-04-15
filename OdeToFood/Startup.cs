@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,10 +19,8 @@ namespace OdeToFood
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            // Registering the InMemory data
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
-
+        {            
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();            
             services.AddRazorPages();
         }
 
