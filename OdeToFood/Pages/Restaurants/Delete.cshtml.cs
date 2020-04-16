@@ -11,7 +11,7 @@ namespace OdeToFood.Pages.Restaurants
 {
     public class DeleteModel : PageModel
     {
-        public Restaurant restaurant { get; set; }
+        public Restaurant Restaurant { get; set; }
 
         public IRestaurantData RestaurantData { get; }
 
@@ -22,11 +22,24 @@ namespace OdeToFood.Pages.Restaurants
 
         public IActionResult OnGet(int id)
         {
+            Restaurant = RestaurantData.FindRestaurant(id);
+
+            if (Restaurant == null)            
+                RedirectToPage("./NotFound");
+
+            return Page();
         }
 
         public IActionResult OnPost(int id)
         {
+            var restaurant = RestaurantData.DeleteRestaurant(id);
+            RestaurantData.Commit();
 
+            if (Restaurant == null)
+                RedirectToPage("./NotFound");
+
+            TempData["Message"] = $"{ restaurant.Name} has been deleted.";
+            return RedirectToPage("./List");
         }
     }
 }
