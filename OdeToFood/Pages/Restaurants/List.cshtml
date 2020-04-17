@@ -20,23 +20,10 @@
     </div>
 </form>
 
-<table class="table thead-dark">
-    <tr>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Cusine type</th>
-    </tr>
-
-    @foreach (var restaurant in Model.Restaurants)
-    {
-        <tr>
-            <td><a asp-page="./details" asp-route-id="@restaurant.Id">@restaurant.Name </a></td>
-            <td>@restaurant.Location</td>
-            <td>@restaurant.Cusine</td>
-        </tr>
-    }
-
-</table>
+@foreach (var restaurant in Model.Restaurants)
+{
+    <partial name="_Summary" model="restaurant" />
+}
 
 <div>
     <a asp-page="./Edit" class="btn btn-primary" style="padding-bottom: 5px">Add Restaurant</a>
