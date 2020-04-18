@@ -8,8 +8,8 @@ using OdeToFood.Data;
 namespace OdeToFood.Data.Migrations
 {
     [DbContext(typeof(OdeToFoodDbContext))]
-    [Migration("20200415192013_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200418110039_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
