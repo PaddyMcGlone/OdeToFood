@@ -4,13 +4,13 @@
     ViewData["Title"] = "Restaurants";
 }
 
-<h1>List of Restaurants</h1>
+<h1>Restaurants</h1>
 
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" asp-for="SearchTerm"/>
-            <span class="input-group-append">                
+            <input type="search" class="form-control" asp-for="SearchTerm" />
+            <span class="input-group-append">
                 <button class="input-group-text">
                     <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd" />
@@ -22,6 +22,10 @@
     </div>
 </form>
 
+<div class="text-right">
+    <vc:restaurant-count></vc:restaurant-count>
+</div>
+
 @foreach (var restaurant in Model.Restaurants)
 {
     <partial name="_Summary" model="restaurant" />
@@ -31,6 +35,7 @@
     <a asp-page="./Edit" class="btn btn-primary" style="padding-bottom: 5px">Add Restaurant</a>
 </div>
 
+
 @section footer {
-    <div>Produced by Patrick McGlone</div>
+    <!-- <div>Produced by Patrick McGlone</div> -->
 }
