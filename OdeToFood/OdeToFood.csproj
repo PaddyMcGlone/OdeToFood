@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Restaurants\" />
+    <Folder Include="ViewComponents\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OdeToFood.Data\OdeToFood.Data.csproj">
