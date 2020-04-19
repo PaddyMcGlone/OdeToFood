@@ -19,9 +19,14 @@ namespace OdeToFood
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
-            services.AddDbContext<OdeToFoodDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+        {
+            // Connection string for Sqlite
+            //services.AddDbContext<OdeToFoodDbContext>(options =>
+            //options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            
+            // Connection for Docker SQL Server
+            services.AddDbContextPool<OdeToFoodDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();            
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
