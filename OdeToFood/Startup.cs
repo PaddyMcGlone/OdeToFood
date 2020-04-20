@@ -31,6 +31,9 @@ namespace OdeToFood
             //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();            
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
 
+            // Register Swagger
+            services.AddSwaggerDocument();
+
             services.AddRazorPages();
             services.AddControllers();
         }
@@ -51,6 +54,10 @@ namespace OdeToFood
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // Register Swagger generator and UI middlewares
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 
