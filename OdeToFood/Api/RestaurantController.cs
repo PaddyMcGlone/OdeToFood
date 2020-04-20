@@ -31,7 +31,7 @@ namespace OdeToFood.Api
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRestaurant([FromBody]int id)
+        public async Task<IActionResult> GetRestaurant([FromRoute]int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
