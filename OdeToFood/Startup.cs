@@ -59,6 +59,9 @@ namespace OdeToFood
             app.UseOpenApi();
             app.UseSwaggerUi3();
 
+            //  Register node modules middleware
+            app.UseNodeModules();
+
             app.UseRouting();
 
             app.UseAuthorization();
