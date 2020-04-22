@@ -66,6 +66,8 @@ namespace OdeToFood
 
             app.UseAuthorization();
 
+            app.UseCookiePolicy();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
