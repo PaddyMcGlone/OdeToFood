@@ -52,6 +52,9 @@ namespace OdeToFood
                 app.UseHsts();
             }
 
+            // Enforce https connections only.
+            app.UseHsts();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
