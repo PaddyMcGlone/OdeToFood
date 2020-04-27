@@ -1,5 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -58,6 +60,8 @@ namespace OdeToFood
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseCookiePolicy();
+
             // Register Swagger generator and UI middlewares
             app.UseOpenApi();
             app.UseSwaggerUi3();
@@ -68,8 +72,6 @@ namespace OdeToFood
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseCookiePolicy();
 
             app.UseEndpoints(endpoints =>
             {
